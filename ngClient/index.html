@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <base href="/">
+    <title>dude</title>
+
+    <script src="https://code.angularjs.org/2.0.0-beta.17/Rx.umd.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-beta.17/angular2-polyfills.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-beta.17/angular2-all.umd.js"></script>
+    <script src="target/scala-2.11/teh-app-jsdeps.js"></script>
+    <script src="target/scala-2.11/teh-app-fastopt.js"></script>
+    <script src="target/scala-2.11/teh-app-sjsx.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            ng.platform.browser.bootstrap(com.lucidchart.AppComponent);
+        });
+    </script>
+
+    <body>
+        <my-app></my-app>
+    </body>
+</html>

@@ -15,3 +15,5 @@ project/plugins/project/
 # Scala-IDE specific
 .scala_dependencies
 .worksheet
+server/public/packages-dist
+server/public/deps/node_modules

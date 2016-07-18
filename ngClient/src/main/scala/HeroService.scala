@@ -9,9 +9,7 @@ import scala.scalajs.js
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 
 @Injectable()
-class HeroService(http: Http) {
-  val heroesUrl = "app/heroes"
-
+class HeroService() {
   def getHeroes(): Future[js.Array[Hero]] = {
     Future.successful(Heroes.all)
   }

@@ -20,8 +20,7 @@ class HeroDetailComponent(
 ) extends OnInit with OnDestroy {
   @Input()
   var hero: js.UndefOr[Hero] = js.undefined
-
-  var sub: js.Dynamic = null
+  var sub: js.UndefOr[js.Dynamic] = js.undefined
 
   def goBack(): Unit = {
     dom.window.history.back()
@@ -39,6 +38,6 @@ class HeroDetailComponent(
   }
 
   def ngOnDestroy(): Unit = {
-    sub.unsubscribe()
+    sub.map(_.unsubscribe())
   }
 }

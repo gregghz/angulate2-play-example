@@ -6,8 +6,8 @@ This is a simple play application that (currently) uses a fork of angulate2 to b
 
 Currently to run this example there are four main steps:
 
-1. Locally publish my fork of angulate2
-2. Build a patched version of Angular 2.0.0-rc.4
+1. Locally publish my fork of angulate2 (pending [PR26](https://github.com/jokade/angulate2/pull/26) and [PR27](https://github.com/jokade/angulate2/pull/27))
+2. Build a patched version of Angular 2.0.0-rc.4 (This should only be necessary until Angular's RC5 release)
 3. Clone the example project and copy built angular sources into the webroot
 4. Build js deps and run the example project
 

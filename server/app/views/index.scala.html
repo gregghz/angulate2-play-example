@@ -22,6 +22,7 @@
     <script src="/assets/packages-dist/router/bundles/router.umd.js"></script>
     <script src="/assets/packages-dist/router-deprecated/bundles/router-deprecated.umd.js"></script>
     <script src="/assets/packages-dist/http/bundles/http.umd.js"></script>
+    <script src="/assets/packages-dist/forms/bundles/forms.umd.js"></script>
 
 
     @if(env.mode == Mode.Prod) {
@@ -34,10 +35,13 @@
     <script src="@routes.Assets.versioned("ngclient-sjsx.js")"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            ng.platformBrowserDynamic.bootstrap(com.lucidchart.AppComponent, [
-                ng.http.HTTP_PROVIDERS,
-                com.lucidchart.Routes().APP_ROUTER_PROVIDERS
-            ]);
+            ng.platformBrowserDynamic.bootstrap(com.lucidchart.AppComponent, {
+                modules: [ng.forms.FormsModule],
+                providers: [
+                    ng.http.HTTP_PROVIDERS,
+                    com.lucidchart.Routes().APP_ROUTER_PROVIDERS
+                ]
+            });
         });
     </script>
 

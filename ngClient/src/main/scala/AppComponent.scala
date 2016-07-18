@@ -5,7 +5,6 @@ import angulate2.http._
 import angulate2.router._
 import org.scalajs.dom
 import scala.scalajs.js
-import scala.scalajs.js.annotation._
 
 @Component(
   selector = "my-app",

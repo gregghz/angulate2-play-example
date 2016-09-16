@@ -13,14 +13,14 @@ lazy val commonSettings = Seq(
 )
 
 lazy val server = project.in(file("server")).
-  enablePlugins(PlayScala, PlayScalaJS, SbtWeb).
+  enablePlugins(PlayScala, SbtWeb).
   settings(commonSettings: _*).
   settings(
     compile in Compile <<= (compile in Compile) dependsOn (fastOptJS in (ngClient, Compile)),
     unmanagedResources in Assets += baseDirectory.value / "../ngClient/target/scala-2.11/ngclient-sjsx.js",
     scalaJSProjects := Seq(ngClient),
     routesGenerator := InjectedRoutesGenerator,
-    pipelineStages := Seq(scalaJSProd),
+    pipelineStages in Assets := Seq(scalaJSPipeline),
     libraryDependencies ++= Seq(
       "com.softwaremill.macwire" %% "macros" % "2.2.2" % "provided"
     )
@@ -30,7 +30,7 @@ lazy val server = project.in(file("server")).
 
 lazy val ngClient = project.in(file("ngClient")).
   settings(commonSettings: _*).
-  enablePlugins(Angulate2Plugin, ScalaJSPlugin, ScalaJSPlay).
+  enablePlugins(Angulate2Plugin, ScalaJSPlugin, ScalaJSWeb).
   dependsOn(sharedJs).
   settings(
     scalaJSOutputMode := org.scalajs.core.tools.javascript.OutputMode.ECMAScript6,
@@ -51,7 +51,7 @@ lazy val ngClient = project.in(file("ngClient")).
 
 lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared")).
   settings(commonSettings: _*).
-  jsConfigure(_ enablePlugins ScalaJSPlay)
+  jsConfigure(_ enablePlugins ScalaJSWeb)
 
 lazy val sharedJvm = shared.jvm
 

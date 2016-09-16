@@ -17,8 +17,6 @@ object Routes {
   )
 
   @JSExport
-  val APP_ROUTER_PROVIDERS = js.Array(
-    js.Dynamic.global.ng.router.provideRouter(routes)
-  )
+  val routing: js.Any = RouterModule.forRoot(routes)
 
 }

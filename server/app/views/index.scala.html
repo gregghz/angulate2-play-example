@@ -10,38 +10,31 @@
 
     <link rel="stylesheet" href="/assets/styles.css" />
 
-    <script src="/assets/deps/node_modules/core-js/client/shim.min.js"></script>
-    <script src="/assets/deps/node_modules/zone.js/dist/zone.js"></script>
-    <script src="/assets/deps/node_modules/reflect-metadata/Reflect.js"></script>
-    <script src="/assets/deps/node_modules/rxjs/bundles/Rx.umd.js"></script>
-    <script src="/assets/packages-dist/core/bundles/core.umd.js"></script>
-    <script src="/assets/packages-dist/common/bundles/common.umd.js"></script>
-    <script src="/assets/packages-dist/compiler/bundles/compiler.umd.js"></script>
-    <script src="/assets/packages-dist/platform-browser/bundles/platform-browser.umd.js"></script>
-    <script src="/assets/packages-dist/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js"></script>
-    <script src="/assets/packages-dist/router/bundles/router.umd.js"></script>
-    <script src="/assets/packages-dist/router-deprecated/bundles/router-deprecated.umd.js"></script>
-    <script src="/assets/packages-dist/http/bundles/http.umd.js"></script>
-    <script src="/assets/packages-dist/forms/bundles/forms.umd.js"></script>
+    <script src="https://unpkg.com/systemjs@@0.19.27/dist/system-polyfills.js"></script>
+    <script src="https://unpkg.com/systemjs@@0.19.27/dist/system.js"></script>
 
+    <script src="https://unpkg.com/core-js@@2.4.1/client/core.js"></script>
+    <script src="https://unpkg.com/reflect-metadata@@0.1.3"></script>
+    <script src="https://unpkg.com/rxjs@@5.0.0-beta.12/bundles/Rx.js"></script>
+    <script src="https://unpkg.com/zone.js@@0.6.23"></script>
 
-    @if(env.mode == Mode.Prod) {
-        <script src="@routes.Assets.versioned("ngclient-opt.js")"></script>
-    } else {
-        <script src="@routes.Assets.versioned("ngclient-fastopt.js")"></script>
-    }
+    <script src="https://unpkg.com/@@angular/core@@2.0.0"></script>
+    <script src="https://unpkg.com/@@angular/common@@2.0.0"></script>
+    <script src="https://unpkg.com/@@angular/compiler@@2.0.0"></script>
+    <script src="https://unpkg.com/@@angular/forms@@2.0.0"></script>
+    <script src="https://unpkg.com/@@angular/http@@2.0.0"></script>
+    <script src="https://unpkg.com/@@angular/platform-browser@@2.0.0"></script>
+    <script src="https://unpkg.com/@@angular/platform-browser-dynamic@@2.0.0"></script>
+    <script src="https://unpkg.com/@@angular/router@@3.0.0"></script>
+    <script src="https://unpkg.com/@@angular/upgrade@@2.0.0"></script>
 
-    <script src="@routes.Assets.versioned("ngclient-jsdeps.js")"></script>
+    <script src="@routes.Assets.versioned("ngclient-opt.js")"></script>
+    <!-- <script src="@routes.Assets.versioned("ngclient-jsdeps.js")"></script> -->
     <script src="@routes.Assets.versioned("ngclient-sjsx.js")"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            ng.platformBrowserDynamic.bootstrap(com.lucidchart.AppComponent, {
-                modules: [ng.forms.FormsModule],
-                providers: [
-                    ng.http.HTTP_PROVIDERS,
-                    com.lucidchart.Routes().APP_ROUTER_PROVIDERS
-                ]
-            });
+            var platform = ng.platformBrowserDynamic.platformBrowserDynamic()
+            platform.bootstrapModule(com.lucidchart.AppModule)
         });
     </script>
 

@@ -27,14 +27,12 @@ class HeroDetailComponent(
   }
 
   def ngOnInit(): Unit = {
-    println(route)
-    sub = route.params.subscribe { params =>
+    sub = route.params.subscribe { (params: js.Dynamic) =>
       val id = params.selectDynamic("id").asInstanceOf[String].toInt
       heroService.getHero(id).map { hero =>
         hero.map(this.hero = _)
       }
     }
-
   }
 
   def ngOnDestroy(): Unit = {

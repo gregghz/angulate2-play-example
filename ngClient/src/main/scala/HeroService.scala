@@ -2,15 +2,17 @@ package com.lucidchart
 
 import angulate2._
 import angulate2.http._
-import java.util.Observable
-import rxjs.core.IObservable
+import rxjs.core.Observable
 import scala.concurrent.Future
 import scala.scalajs.js
 import scala.scalajs.concurrent.JSExecutionContext.Implicits.queue
 
 @Injectable()
-class HeroService() {
+class HeroService(http: Http) {
+  val heroesUrl = "app/heroes"
+
   def getHeroes(): Future[js.Array[Hero]] = {
+    //http.get(heroesUrl).toFuture.map(response => response.json())
     Future.successful(Heroes.all)
   }
 
